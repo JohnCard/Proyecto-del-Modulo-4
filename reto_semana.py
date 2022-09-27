@@ -1,6 +1,3 @@
-from argparse import ZERO_OR_MORE
-
-
 abc = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ '
 def recorrer_cadena(param):
     cont = 0
@@ -51,7 +48,8 @@ print('''
         ● Salir (S).
         
       ''')
-
+lista_nombres = []
+calificaciones = []
 answer = input('\t Imprima su primer respuesta (S/1/2): ')
 while True:
     if(answer != 'S' and answer != 's' and answer != '1' and answer != '2'):
@@ -68,20 +66,30 @@ while True:
         nombre = input('Digite el nombre del nuevo alumno: ')
         while(recorrer_cadena(nombre) > 0):
             nombre = input('Digite el nombre del nuevo alumno nuevamente: ')
+        lista_nombres.append(nombre)
         while True:
             try:
-              num_calificaciones = input(f'Digite el numero de calificaciones del alumno {nombre}: ')
-              num_calificaciones = int(num_calificaciones)
+              num_calificaciones = int(input(f'Digite el numero de calificaciones del alumno {nombre}: '))
               break
             except ValueError as error:
                 print(f'Ha ocurrido el siguiente error: {error}')
         cont = 0
         for calificacion in range(num_calificaciones):
             cont+= 1
-            calificacion = input(f'Digite la calificacion numero {cont}: ')
+            calificaciones.append([])
             while True:
                 try:
-                  calificacion = int
+                  calificacion = float(input(f'Digite la calificacion numero {cont}: '))
+                  break
+                except ValueError as error_dos:
+                    print(f'¡Ha digitado mal la calificación numero {cont}!. ')
+            calificaciones[0].append(calificacion)
+    elif(answer == '2'):
+        for nombre in lista_nombres:
+            print(f'''
+            Nombre del alumno: {nombre}
+
+            ''')
     elif(answer == ('s' or 'S')):
         answer_dos = input('Esta seguro de que desea salir del programa (S/N)? ')
         while True:
