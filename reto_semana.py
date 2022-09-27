@@ -86,9 +86,13 @@ while True:
             calificaciones[0].append(calificacion)
     elif(answer == '2'):
         for nombre in lista_nombres:
+            nota_sumatoria = 0
+            for nota in calificaciones[calificaciones.index(nombre)]:
+                nota_sumatoria += nota
+            #### ¡PENDIENTE de las 3:21 p.m.!
             print(f'''
             Nombre del alumno: {nombre}
-
+            Promedio de {nombre}: 
             ''')
     elif(answer == ('s' or 'S')):
         answer_dos = input('Esta seguro de que desea salir del programa (S/N)? ')
