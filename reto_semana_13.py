@@ -99,4 +99,4 @@ while True:
 
   ● Salir (S)
           ''')
-      answer = input('Digite su respuesta: ')
+      answer = input('Digite su respuesta (S/1/2): ')
