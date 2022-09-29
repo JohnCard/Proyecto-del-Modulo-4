@@ -126,10 +126,6 @@ while True:
     print('Nombres y promedios de alumnos registrados hasta ahora: ')
     for nombre in lista_nombres:
       alumno += 1
-      # nota_sumatoria = 0
-      # for nota in calificaciones[alumno]:
-      #   nota_sumatoria += nota
-      # promedio = nota_sumatoria/len(calificaciones[alumno])
       print(f'''
       Nombre del alumno {alumno+1}: {nombre}
       Promedio de {nombre}: {promedios[alumno]: .3f}''')
