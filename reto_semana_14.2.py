@@ -112,7 +112,15 @@ while True:
                 cont += 1
                 print(f'Usuario numero {cont}: {nombre}')
             indice_usuario = input('Digite el indice del usuario de quien desea modificar los atributos: ')
-        # print --- ¡PENDIENTE! ---
+        print('''
+        A continuación, le mostramos los indices de a cuerdo al atributo que se desee modificar:
+        1 - Nombre
+        2 - Télefono
+        3 - Correo''')
+        indice_atributo = input(f'Digite el indice del atributo que desea modificar de {nombres[indice_usuario]}')
+        while(indice_atributo not in usuarios_atributos):
+            indice_atributo = input(f'El indice {indice_atributo} ¡NO ES VÁLIDO!, favor de intentarlo de nuevo')
+        
     else:
         answer_final = input('Desea checar algun otro archivo (S/N)? ')
         while(answer_final != ('s','S','n','N')):
