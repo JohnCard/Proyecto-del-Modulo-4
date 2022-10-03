@@ -110,9 +110,27 @@ print('''
       ''')
 registrar_usuarios()
 
+# ahora pasaremos a la parte donde le preguntamos si es que quiere agregar todos los datos a un archivo
+# txt ya existente, o si quiere crear uno nuevo, que para el caso, realmente no tendria importancia,
+# ya que cuando le preguntemos si esque quiere agregar toda la información digitada a un archivo y el 
+# responda con un "2" que efectivamente desea escoger uno ya existente, aunque digite mal el parametro,
+# será como tal el parametro que tomaremos para llamar el archivo txt o crearlo en caso de que no exista,
+# yaque asi funciona el metodo open() en los archivos, el parametro que se le pase primero para abrirlo,
+# si  es que no existe, de todas formas creará uno nuevo con el nombre que se le halla asignado para a
+# abrir, la unica condición seria que tenga la terminación ".txt", por eso no solo lo diseñaremos de tal
+# forma que aunque digite errores, se le muestre al final en que archivo se dirigió toda la información:
+print('''Digite por favor el nombre del archivo a donde se dirigirá toda la
+ información nueva (¡En caso de digitar un nombre de un archivo no existente, se creará un nuevo archivo 
+ con el nombre digitado, al final se le mostrará ha donde se fue toda la información que usted haya 
+ registrado a lo largo del programa!). ''')
+direccion_archivo = input('Digitar nombre del archivo: ')
+if((direccion_archivo.endswith('txt')) == False):
+    direccion_archivo += direccion_archivo+'.txt'
+else:
+    pass
         
 # la lógica final de este programa consistirá en agregar todos los nombres, telefonos y correos electronicos
-# digitados en las listas nombres,telefonos y correos en el archivo "reto_semana_14.txt":
+# digitados en las listas nombres,telefonos y correos en el archivo con el nombre especificado por el usuario:
 
 # en esta parte del codigo lo que pretenderemos será abrir el archivo que esta enlazado con el reto de la 
 # semana, donde por cada usuario ya registrado en caso de que este programa ya haya sido usado anteriormente,
@@ -121,13 +139,13 @@ registrar_usuarios()
 # donde empezamos a agregarle al archivo "reto_semana_14.txt" todos los nombres,telefonos y correos nuevos
 # con el formato especificado que se puede ver ahi, a parte de Usuario numero {cont}, lo haga con un indice
 # correcto
-with open("reto_semana_14.txt",'r') as file:
+with open(direccion_archivo,'r') as file:
     cont = 0
     for i in file:
         if 'Usuario' in i:
             cont += 1
             
-with open("reto_semana_14.txt",'a') as archivo:
+with open(direccion_archivo,'a') as archivo:
     cont_dos = 0
     for nombre in nombres:
         cont_dos += 1
