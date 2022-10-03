@@ -1,5 +1,3 @@
-from reto_semana_14 import nombres,telefonos,correos
-
 # ejercicio del reto_semanal_14
 '''
 En el ejercicio anterior, solo vimos una parte: cómo escribir un nuevo archivo para guardar nuestras salidas. 
@@ -14,9 +12,17 @@ anterior y puedas modificar los datos de algún contacto.
 
 # inicialización de funciones:
 
-# Función 1 : mostrar_archivo()
-def mostrar_archivo():
-    with open("reto_semana_15.txt",'a') as file:
+# Función 1 : mostrar_archivo(archivo)
+def mostrar_archivo(archivo):
+    '''
+    Esta función recibe como parametro un archivo, el cual como se muestra a continuación, se usa el método
+    "with" para abrirlo y mostrar su información en un ciclo "for"
+    '''
+    with open(archivo,'a') as file:
         for linea in file:
             print(linea)
-            
+
+# En esta primera parte le preguntamos al usuario que archivo le gustaria abrir para poder ver toda su información
+# contenida por el momento, mostrandole una lista con todos los nombres de los archivos disponibles para 
+# solicitar información, y mientras no digite exactamente igual el nombre de alguno de ellos, ¡No se le permitirá 
+# continuar!.            
