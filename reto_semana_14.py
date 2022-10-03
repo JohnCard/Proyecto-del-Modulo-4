@@ -125,7 +125,7 @@ print('''Digite por favor el nombre del archivo a donde se dirigirá toda la
  registrado a lo largo del programa!). ''')
 direccion_archivo = input('Digitar nombre del archivo: ')
 if((direccion_archivo.endswith('txt')) == False):
-    direccion_archivo += direccion_archivo+'.txt'
+    direccion_archivo = direccion_archivo + '.txt'
 else:
     pass
         
