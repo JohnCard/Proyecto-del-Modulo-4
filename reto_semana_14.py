@@ -1,3 +1,12 @@
+# importamos la fecha para registrar información de distintos usuarios para ademas de sus datos, agregar la
+# fecha en que fueron registrados:
+from datetime import datetime
+ahora = datetime.now()
+# aqui guardamos la fecha exacta para registrarla en la lista de fechas cuando terminemos de registrar todos
+# los atributos de un nuevo usuario (mas especificamente, en la linea 78 en el atributo final de un usario
+# que es su correo).
+fecha = ahora.strftime("%Y-%m-%d %H:%M:%S")
+
 # funciones para el programa
 
 # 1 .- Función: mostrar_menu()
@@ -8,7 +17,7 @@ def mostrar_menu():
     print('''
     Digite la siguiente acción a realizar: 
     1 para registrar un usuario
-    2 para dejer de registrar usuarios y poder salir del programa
+    2 para dejar de registrar usuarios y poder salir del programa
           ''')
     
 # 2 .- Función: respuesta(answer)
@@ -68,6 +77,7 @@ def registrar_usuarios():
             correo = ''
             correo = validar_variable('correo electrónico',correo,correos_electronicos)
             correos.append(correo)
+            fechas.append(fecha)
         else:
             break
 
@@ -81,6 +91,12 @@ def validar_telefono(numero,variable):
     while(recorrer(numero,variable) > 0 or len(numero) > 12 or len(numero) < 12):
         numero = input(f'El dato {numero} ¡NO ES VÁLIDO!, digite su numero telefonico de nuevo por favor: ')
     return numero
+
+# 8 .- Función: validar_respuesta(answer):
+def validar_respuesta(answer):
+    while(answer != ('s' and 'S' and 'n' and 'N')):
+        answer = input(f'Su respuesta {answer} ¡ES INVÁLIDA!, favor de digitarla de nuevo por favor (S/N): ')
+    return answer
 
 # este es un apartado donde declararemos variables que pueden resultar utiles para validar datos de un 
 # usuario nuevo:
@@ -98,6 +114,7 @@ numeros = '123456789- '
 nombres = []
 telefonos = []
 correos = []
+fechas = []
 # esta variable nos puede servir porque están solo los caracteres que deberían contener los correos
 # electronicos
 correos_electronicos = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz@.123456789-'
@@ -129,9 +146,6 @@ if((direccion_archivo.endswith('txt')) == False):
 else:
     pass
         
-# la lógica final de este programa consistirá en agregar todos los nombres, telefonos y correos electronicos
-# digitados en las listas nombres,telefonos y correos en el archivo con el nombre especificado por el usuario:
-
 # en esta parte del codigo lo que pretenderemos será abrir el archivo que esta enlazado con el reto de la 
 # semana, donde por cada usuario ya registrado en caso de que este programa ya haya sido usado anteriormente,
 # lo que haremos será abrir un contador el cual por cada que se encuentre con la alabra "Usuario", por ende se
@@ -139,12 +153,24 @@ else:
 # donde empezamos a agregarle al archivo "reto_semana_14.txt" todos los nombres,telefonos y correos nuevos
 # con el formato especificado que se puede ver ahi, a parte de Usuario numero {cont}, lo haga con un indice
 # correcto
-with open(direccion_archivo,'r') as file:
-    cont = 0
-    for i in file:
-        if 'Usuario' in i:
-            cont += 1
-            
+try:
+    with open(direccion_archivo,'r') as file:
+        cont = 0
+        for i in file:
+            if 'Usuario' in i:
+                cont += 1
+except FileNotFoundError as archivo_inexistente:
+    with open(direccion_archivo,'w') as file:
+        file.write('')
+finally:
+    with open(direccion_archivo,'r') as file:
+        cont = 0
+        for i in file:
+            if 'Usuario' in i:
+                cont += 1
+                
+# la lógica final de este programa consistirá en agregar todos los nombres, telefonos y correos electronicos
+# digitados en las listas nombres,telefonos y correos en el archivo con el nombre especificado por el usuario:            
 with open(direccion_archivo,'a') as archivo:
     cont_dos = 0
     for nombre in nombres:
@@ -152,8 +178,7 @@ with open(direccion_archivo,'a') as archivo:
         cont += 1
         archivo.write(f'''\n
 \tUsuario numero {cont}:
-Nombre: {nombre}
+Nombre: {nombre} 
 Telefono: {telefonos[cont_dos-1]}
-Correo electrónico: {correos[cont_dos-1]}''')
-
-# Ahora iremos con la siguiente parte del programa
+Correo electrónico: {correos[cont_dos-1]}
+Fecha de registro: {fechas[cont_dos-1]}''')
