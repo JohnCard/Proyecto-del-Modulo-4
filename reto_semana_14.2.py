@@ -1,4 +1,5 @@
-from reto_semana_14 import nombres,telefonos,correos
+from reto_semana_14 import nombres,telefonos,correos,validar_variable,validar_telefono,abecedario,numeros
+from reto_semana_14 import correos_electronicos,validar_respuesta,recorrer
 
 # ejercicio del reto_semanal_14
 '''
@@ -30,20 +31,22 @@ def mostrar_archivo(archivo):
 # solicitado, evitando que digite algo diferente al nombre de un atributo
 usuarios_atributos = ['1','2','3']
 
-# En esta primera parte le preguntamos al usuario que archivo le gustaria abrir para poder ver toda su información
-# contenida por el momento, mostrandole una lista con todos los nombres de los archivos disponibles para 
-# solicitar información, y mientras no digite exactamente igual el nombre de alguno de ellos, ¡No se le permitirá 
-# continuar!, ya que obviamente no puede solicitar información que no existe ya que despues se le pregunbtará si 
-# desea hacer alguna modificación.
+# En esta primera parte le preguntamos al usuario que archivo le gustaria abrir para poder ver toda su 
+# información contenida por el momento, mostrandole una lista con todos los nombres de los archivos disponibles
+# para solicitar información, y mientras no digite exactamente igual el nombre de alguno de ellos, ¡No se le 
+# permitirá continuar!, ya que obviamente no puede solicitar información que no existe ya que despues se le 
+# pregunbtará si desea hacer alguna modificación.
 
 # esta será la lista con todos los archivos disponibles
-archivos = ['archivo_cinco','archivo_cuatro','archivo_tres','archivo_dos','archivo_uno','reto_semana_14','reto_semana_15']
+archivos = ['archivo_cinco','archivo_cuatro','archivo_tres','archivo_dos','archivo_uno','reto_semana_14',
+'reto_semana_15']
 
 # le mostramos la lista junto con una pequeña bienvenida:
 print('''
-Sea coordialemente bienvenido al programa donde le permitimos modificar datos de los nombres, telefonos o correos 
-registrados en el programa anterior  😎 😁 🤠 🧐 🤓 🥸 🤟 🤘 👨‍💻 🧑‍💻 🕵️‍♂️, a continuación, le mostraremos
-una lista con todos los archivos disponibles a solicitar:
+Sea coordialemente bienvenido al programa donde le permitimos modificar datos de los nombres, telefonos o 
+correos registrados en el programa anterior  😎 😁 🤠 🧐 🤓 🥸 🤟 🤘 👨‍💻 🧑‍💻 🕵️‍♂️, a continuación, le 
+mostraremos una lista con todos los archivos disponibles a solicitar, pero en caso de querer salir del 
+programa, solo deberá resionar una "N":
 ''')
 while True:
     indice_archivo = 0
@@ -52,7 +55,8 @@ while True:
         print(f'Archivo numero {indice_archivo}: {archivo}')
 
     # ahora le preguntamos cual de todos los archivos mostrados en el ciclo desea modificar.
-    archivo_nombre = input('Digite el nombre del archivo que desea modificar (debe escribir por lo menos su nombre tal y como se muestra en la lista): ')
+    archivo_nombre = input('''Digite el nombre del archivo que desea modificar (debe escribir por lo menos su 
+nombre tal y como se muestra en la lista), o salga del programa (nombre_archivo/N): ''')
     while True:
         if(archivo_nombre not in archivos):
             print(f'Este nombre ({archivo_nombre}) ¡NO EXISTE EN LA LISTA!, favor intentarlo de nuevo: ')
@@ -96,8 +100,7 @@ while True:
     
     # le preguntamos si desea solicitar la información de algún usuario antes que nada
     answer = input('Desea modificar la información de algun usuario (S/N): ')
-    while(answer != ('s','S','n','N')):
-        answer = input(f'La respuesta {answer} ¡NO ES VÁLIDA!, favor de intentarlo de nuevo (S/N): ')
+    answer = validar_respuesta(answer)
     if(answer == ('s' or 'S')):
         print('Usuarios disponibles: ⤵⬇📄📃📜')
         cont = 0
@@ -116,14 +119,35 @@ while True:
         A continuación, le mostramos los indices de a cuerdo al atributo que se desee modificar:
         1 - Nombre
         2 - Télefono
-        3 - Correo''')
-        indice_atributo = input(f'Digite el indice del atributo que desea modificar de {nombres[indice_usuario]}')
-        while(indice_atributo not in usuarios_atributos):
-            indice_atributo = input(f'El indice {indice_atributo} ¡NO ES VÁLIDO!, favor de intentarlo de nuevo')
-        
+        3 - Correo
+        ''')
+        while True:
+            print('''
+        1 - Nombre
+        2 - Télefono
+        3 - Correo
+        ''')
+            indice_atributo = input(f'''Digite el indice del atributo que desea modificar de 
+{nombres[indice_usuario]}: ''')
+            indice_atributo = validar_variable('indice',indice_atributo,lista_indices)
+            if(indice_atributo == '1'):
+                nuevo_nombre = ''
+                nuevo_nombre = validar_variable('nombre',nuevo_nombre,abecedario)
+                nombres[indice_usuario] = nuevo_nombre
+            elif(indice_atributo == '2'):
+                nuevo_telefono = ''
+                nuevo_telefono = validar_telefono(nuevo_telefono,numeros)
+                telefonos[indice_usuario] = nuevo_telefono
+            else:
+                nuevo_correo = ''
+                nuevo_correo = validar_variable('correo',nuevo_correo,correos_electronicos)
+                correos[indice_usuario] = nuevo_correo
+            answer_dos = input(f'Desea modificar algun otro atributo de {nombres[indice_usuario]} (S/N)? ')
+            answer_dos = validar_respuesta(answer_dos)
+            if(answer_dos == ('n' or 'N')):
+                continue
     else:
         answer_final = input('Desea checar algun otro archivo (S/N)? ')
-        while(answer_final != ('s','S','n','N')):
-            answer_final = input(f'La respuesta {answer} ¡NO ES VÁLIDA!, favor de intentarlo de nuevo (S/N): ')
+        answer_final = validar_respuesta(answer_final)
     if(answer_final == ('N' or 'n')):
         break
