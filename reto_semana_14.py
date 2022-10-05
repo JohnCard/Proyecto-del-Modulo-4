@@ -47,7 +47,7 @@ def validar_variable(tipo_dato,cadena,variable):
     y luego de que el lo introduzca, en caso de haber introducido algo mal, se inicializará un ciclo que 
     no terminará hasta que digité bien el parametro con ayuda de la función "recorrer()"
     '''
-    cadena = input(f'Digite su {tipo_dato}: ')
+    cadena = input(f'Digite su nuevo {tipo_dato}: ')
     while(recorrer(cadena,variable) > 0 or ('..' or '@@') in cadena):
         cadena = input(f'El dato {cadena} ¡NO ES VÁLIDO!, digite su {tipo_dato} de nuevo por favor: ')
     return cadena
@@ -94,9 +94,20 @@ def validar_telefono(numero,variable):
 
 # 8 .- Función: validar_respuesta(answer):
 def validar_respuesta(answer):
-    while(answer != ('s' and 'S' and 'n' and 'N')):
+    while(answer != 's' and answer != 'S' and answer != 'n' and answer != 'N'):
         answer = input(f'Su respuesta {answer} ¡ES INVÁLIDA!, favor de digitarla de nuevo por favor (S/N): ')
     return answer
+
+# 9 .- Función: validar_variable_dos():
+def validar_variable_dos(tipo_dato,cadena,variable):
+    '''
+    esta función resive el parametro tipo_dato para darle a entender al usuario que se le pide en el input,
+    y luego de que el lo introduzca, en caso de haber introducido algo mal, se inicializará un ciclo que 
+    no terminará hasta que digité bien el parametro con ayuda de la función "recorrer()"
+    '''
+    while(recorrer(cadena,variable) > 0 or ('..' or '@@') in cadena):
+        cadena = input(f'El dato {cadena} ¡NO ES VÁLIDO!, digite su {tipo_dato} de nuevo por favor: ')
+    return cadena
 
 # este es un apartado donde declararemos variables que pueden resultar utiles para validar datos de un 
 # usuario nuevo:
@@ -180,5 +191,5 @@ with open(direccion_archivo,'a') as archivo:
 \tUsuario numero {cont}:
 Nombre: {nombre} 
 Telefono: {telefonos[cont_dos-1]}
-Correo electrónico: {correos[cont_dos-1]}
+Correo electronico: {correos[cont_dos-1]}
 Fecha de registro: {fechas[cont_dos-1]}''')
