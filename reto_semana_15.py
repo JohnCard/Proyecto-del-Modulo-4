@@ -23,7 +23,7 @@ def validar_dato(coordenada,tipo_coordenada):
 
 # generamos nuestra clave api gratuita de openweather
 
-# clave api gratuita openweather: ##########################
+# clave api gratuita openweather: 1ae93d46e24e70031b87fefbce42fb86
 
 # sin embargo, realizaremos un programa aún mas dinamico, solicitando todo
 # lo necesario para pronosticar el tiempo o las condiciones en que se en-
@@ -35,13 +35,10 @@ while(answer == ('s' or 'S')):
     print('''Usted puede consultar su longitud y la altitud de su ciudad en el siguiente link: 
 https://www.coordenadas-gps.com/
 Usted decide con cuales parametros buscar una ciudad:
-1) por el id de la ciudad: https://api.openweathermap.org/data/2.5/weather?id={city id}&appid={API key}
-
-2) por la longitud y latitud de la ciudad: https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
-
-3) por el nombre de la ciudad: https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-
-4) por el codigo (el postal y el de la ciudad): https://api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={API key}
+1) por el id de la ciudad
+2) por la longitud y latitud de la ciudad
+3) por el nombre de la ciudad
+4) por el codigo (el postal y el de la ciudad)
 ''')
     indice = input('Digite el indice con el que desea trabajar (1/2/3/4): ')
     while(indice != '1' and indice != '2' and indice != '3' and indice != '4'):
