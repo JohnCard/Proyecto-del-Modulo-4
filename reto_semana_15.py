@@ -72,17 +72,15 @@ Usted decide con cuales parametros buscar una ciudad:
         codigo_postal = validar_entero(codigo_postal,'codigo postal')
         country_code = input('Digite el codigo de su pais: ').upper()
         peticion = requests.get(f'https://api.openweathermap.org/data/2.5/weather?zip={codigo_postal},{country_code}&appid=###############################')
-         
-    if peticion.status_code != 200:
-        print(f'Los datos introducidos resultarón ivalidos. ')
-        answer = input('Desea reintentar de nuevo (S/N): ')
-        while(answer != 'n' and answer != 'N' and answer != 's' and answer != 'S'):
-            answer = input(f'Su respuesta {answer} es ¡INVÁLIDA!, favor de intentarlo de nuevo (S/N): ')
-    else: 
+
+    try: 
         json_file = peticion.json()
         print(f'Condiciones de la ciudad {json_file["name"]}: {json_file["weather"][0]["main"]} ')
-        answer = input('Desea reintentar con coordenadas distintas (S/N): ')
-        while(answer != 'n' and answer != 'N' and answer != 's' and answer != 'S'):
-            answer = input(f'Su respuesta {answer} es ¡INVÁLIDA!, favor de intentarlo de nuevo (S/N): ')
+    except:
+        print(f'Los datos introducidos resultarón ivalidos. ')
+    answer = input('Desea reintentar con datos distintos para otra ciudad (S/N): ')
+    while(answer != 'n' and answer != 'N' and answer != 's' and answer != 'S'):
+        answer = input(f'Su respuesta {answer} es ¡INVÁLIDA!, favor de intentarlo de nuevo (S/N): ')
+
     if(answer == ('n' or 'N')):
         exit()
