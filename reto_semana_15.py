@@ -11,19 +11,28 @@ import requests
 
 # Funciones a utilizar:
 
+# Función para validar coordenadas
 def validar_dato(coordenada,tipo_coordenada):
     while True:
         try:
             coordenada = (input(f'Digite su {tipo_coordenada}: '))
+            # esto lo hacemos para asegurarnos de que lo que digitó fue un numero
             float(coordenada)
             break
-        except:
+        except ValueError:
             print(f'La {tipo_coordenada} ¡ES INVÁLIDA!, intentelo de nuevo!.')
     return str(coordenada)
 
+# Función para validar numeros enteros
+def validar_entero(dato_entero,tipo_dato):
+    dato_entero = input(f'Digite su {tipo_dato} por favor: ')
+    while(dato_entero.isnumeric() == False):
+        dato_entero = input(f'El dato {tipo_dato} digitado es ¡INCORECTO!, favor de digitar su {tipo_dato} de nuevo: ')
+    return dato_entero
+
 # generamos nuestra clave api gratuita de openweather
 
-# clave api gratuita openweather: 1ae93d46e24e70031b87fefbce42fb86
+# clave api gratuita openweather: #########################
 
 # sin embargo, realizaremos un programa aún mas dinamico, solicitando todo
 # lo necesario para pronosticar el tiempo o las condiciones en que se en-
@@ -32,6 +41,8 @@ def validar_dato(coordenada,tipo_coordenada):
 
 answer = 's'
 while(answer == ('s' or 'S')):
+    api_key = ''
+    api_key = validar_entero(api_key,'Api_Key')
     print('''Usted puede consultar su longitud y la altitud de su ciudad en el siguiente link: 
 https://www.coordenadas-gps.com/
 Usted decide con cuales parametros buscar una ciudad:
@@ -45,7 +56,7 @@ Usted decide con cuales parametros buscar una ciudad:
         indice = input(f'Su respuesta {indice} es ¡INVÁLIDA!, favor de intentarlo de nuevo (1/2/3/4): ')
     if(indice == '1'):
         id_city = ''
-        id_city = validar_dato(id_city,'id')
+        id_city = validar_entero(id_city,'id')
         peticion = requests.get(f'https://api.openweathermap.org/data/2.5/weather?id={id_city}&appid=###############################')
     elif(indice == '2'):
         longitud = ''
@@ -58,7 +69,7 @@ Usted decide con cuales parametros buscar una ciudad:
         peticion = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid=###############################')
     elif(indice == '4'):
         codigo_postal = ''
-        codigo_postal = validar_dato(codigo_postal,'codigo postal')
+        codigo_postal = validar_entero(codigo_postal,'codigo postal')
         country_code = input('Digite el codigo de su pais: ').upper()
         peticion = requests.get(f'https://api.openweathermap.org/data/2.5/weather?zip={codigo_postal},{country_code}&appid=###############################')
          
