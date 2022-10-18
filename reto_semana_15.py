@@ -1,6 +1,6 @@
 import requests
 
-# Datos de openweather API:
+# Datos de openweather API para obtener el clima de distintas localidades:
 # por el id de la ciudad: https://api.openweathermap.org/data/2.5/weather?id={city id}&appid={API key}
 
 # por la lon y lat de la ciudad: https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
@@ -30,10 +30,6 @@ def validar_entero(dato_entero,tipo_dato):
         dato_entero = input(f'El dato {tipo_dato} digitado es ¡INCORECTO!, favor de digitar su {tipo_dato} de nuevo: ')
     return dato_entero
 
-# generamos nuestra clave api gratuita de openweather
-
-# clave api gratuita openweather: #########################
-
 # sin embargo, realizaremos un programa aún mas dinamico, solicitando todo
 # lo necesario para pronosticar el tiempo o las condiciones en que se en-
 # cuentra un determinado lugar bajo ciertas condiciones, como son las 
@@ -41,8 +37,9 @@ def validar_entero(dato_entero,tipo_dato):
 
 answer = 's'
 while(answer == ('s' or 'S')):
-    api_key = ''
-    api_key = validar_entero(api_key,'Api_Key')
+    api_key = input('Digite su Api_Key: ')
+    while(api_key.isidentifier() == False):
+        api_key = input(f'La Api Key {api_key} digitada ¡NO ES VÁLIDA!, favor de digitarla de nuevo: ')
     print('''Usted puede consultar su longitud y la altitud de su ciudad en el siguiente link: 
 https://www.coordenadas-gps.com/
 Usted decide con cuales parametros buscar una ciudad:
@@ -57,21 +54,21 @@ Usted decide con cuales parametros buscar una ciudad:
     if(indice == '1'):
         id_city = ''
         id_city = validar_entero(id_city,'id')
-        peticion = requests.get(f'https://api.openweathermap.org/data/2.5/weather?id={id_city}&appid=###############################')
+        peticion = requests.get(f'https://api.openweathermap.org/data/2.5/weather?id={id_city}&appid={api_key}')
     elif(indice == '2'):
         longitud = ''
         longitud = validar_dato(longitud,'longitud')
         latitud = ''
         latitud = validar_dato(latitud,'latitud')
-        peticion = requests.get(f'https://api.openweathermap.org/data/2.5/weather?lat={latitud}&lon={longitud}&appid=###############################')
+        peticion = requests.get(f'https://api.openweathermap.org/data/2.5/weather?lat={latitud}&lon={longitud}&appid={api_key}')
     elif(indice == '3'):
         city_name = input('Digite el nombre de su ciudad: ').title()
-        peticion = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid=###############################')
+        peticion = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={api_key}')
     elif(indice == '4'):
         codigo_postal = ''
         codigo_postal = validar_entero(codigo_postal,'codigo postal')
         country_code = input('Digite el codigo de su pais: ').upper()
-        peticion = requests.get(f'https://api.openweathermap.org/data/2.5/weather?zip={codigo_postal},{country_code}&appid=###############################')
+        peticion = requests.get(f'https://api.openweathermap.org/data/2.5/weather?zip={codigo_postal},{country_code}&appid={api_key}')
 
     try: 
         json_file = peticion.json()
