@@ -86,3 +86,30 @@ with open("reto_semana_15.txt",'w') as file:
 # ---------------------------------------------------------------------------------------------------------
 
 # experimento 8 : pruebas con import
+import requests
+
+peticion_url = requests.get('https://pokeapi.co/api/v2/pokemon/charizard')
+
+url_json = peticion_url.json()
+
+print(url_json["name"])
+# Como mostrar las habilidade de un pokemon con la Poke_Api:
+print('\nHABILIDADES DE UN POKEMON: ')
+cont = -1
+for i in url_json["abilities"]:
+    cont += 1
+    print(url_json["abilities"][cont]["ability"]["name"])
+    
+# Como mostrar los movimientos de un pokemon con la Poke_Api:
+print('\nMOVIMIENTOS DE UN POKEMON:')
+cont = -1
+for i in url_json["moves"]:
+    cont += 1
+    print(url_json["moves"][cont]["move"]["name"])
+    
+# Como mostrar los types de un pokemon:
+print('\nTIPOS DE UN POKEMON: ')
+cont = -1
+for i in url_json["types"]:
+    cont += 1
+    print(url_json["types"][cont]["type"]["name"])
