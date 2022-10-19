@@ -47,8 +47,9 @@ while(answer == ('s' or 'S')):
         img = pokemon_jason["sprites"]["front_default"]
         imagen = Image.open(urlopen(img))
         plt.imshow(imagen)
-        plt.title(pokemon_jason["name"].capitalize())
-        plt.xlabel(f'''Peso: {pokemon_jason["weight"]}   Tamaño: {pokemon_jason["height"]}''')
+        plt.title(f'''Nombre del pokemon: {pokemon_jason["name"].capitalize()}\nHabilidades: - {pokemon_jason["abilities"][1]["ability"]["name"]}\n           - {pokemon_jason["abilities"][0]["ability"]["name"]}''')
+        plt.xlabel(f'''Peso: {pokemon_jason["weight"]}   Tamaño: {pokemon_jason["height"]}
+Movimientos: {pokemon_jason["moves"][0]["move"]["name"]}''')
         plt.show()
     except:
         print(f'El pokemon {nombre_pokemon} no existe!')
