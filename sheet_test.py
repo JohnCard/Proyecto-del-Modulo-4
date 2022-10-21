@@ -1,4 +1,11 @@
 from string import ascii_lowercase,ascii_uppercase
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+import scipy as sp
+import requests
+from PIL import Image
+from urllib.request import urlopen
 # ---------------------------------------------------------------------------------------------------------
 
 # experimento 1 : pruebas con las palabras clave "True" y "break":
@@ -141,3 +148,27 @@ a = 'Hola mundo\nquetal como andas'
 b = 'a\n'
 print('\n' in (b))
 # conclusion: ¡Funcionó!
+
+# ---------------------------------------------------------------------------------------------------------
+
+# experimento 10 : pruebas con matplotlib
+fig = plt.figure()
+plt.axis([0, 20, 0, 20])
+plt.text(1, 1, 'Hola mundo \n como andas', ha='left', rotation=0)
+plt.show()
+
+lis = []
+for i in range(30):
+    lis.append((i+1))
+
+u = 0; string = ''
+while(u<len(lis)):
+    for i in range(u,u+5):
+        i+= 1
+        string += str(i) + ' ' +'\n'
+    u += 5
+
+fig = plt.figure()
+plt.axis([0, 20, 0, 20])
+plt.text(1, 1, string, ha='left', rotation=0)
+plt.show()
