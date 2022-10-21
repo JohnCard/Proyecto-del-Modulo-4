@@ -60,3 +60,17 @@ Movimientos: {pokemon_jason["moves"][0]["move"]["name"]}''')
     if(answer == ('n' or 'N')):
         print('Gracias por confiar en nosotros, nos vemos la próxima, adios :).')
         exit()
+
+lis = []
+for i in range(30):
+    lis.append((i+1))
+print(lis)
+u = 0; string = ''
+# while(u<len(lis)):
+    #  for i in range(5):
+    #    i += 1
+    #    string += str()
+    
+# experimento 2
+for i in range(5,7):
+    print(i)
