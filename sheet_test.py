@@ -113,3 +113,31 @@ cont = -1
 for i in url_json["types"]:
     cont += 1
     print(url_json["types"][cont]["type"]["name"])
+
+# ---------------------------------------------------------------------------------------------------------
+
+# experimento 9 : pruebas con listas
+# experimento 9.1:
+lis = []
+for i in range(30):
+    lis.append((i+1))
+print(lis)
+u = 0; string = ''
+while(u<len(lis)):
+    for i in range(u,u+5):
+        i+= 1
+        string += str(i) + ' '
+    u += 5
+print(string)
+# Conclusión: ¡Funcionó!
+    
+# experimento 9.2:
+for i in range(5,7):
+    print(i)
+# Conclusión: ¡Funcionó!
+    
+# experimento 9.3: 
+a = 'Hola mundo\nquetal como andas'
+b = 'a\n'
+print('\n' in (b))
+# conclusion: ¡Funcionó!
