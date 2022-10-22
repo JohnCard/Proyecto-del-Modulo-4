@@ -172,3 +172,57 @@ fig = plt.figure()
 plt.axis([0, 20, 0, 20])
 plt.text(1, 1, string, ha='left', rotation=0)
 plt.show()
+
+# -------------------------------------------------------------------------
+# 3:03 p. m. 22/10/2022
+import requests
+import matplotlib.pyplot as plt
+from PIL import Image
+from urllib.request import urlopen
+import json
+
+url_peticion = requests.get(f'https://pokeapi.co/api/v2/pokemon/ditto')
+json_url = url_peticion.json()
+# img = pokemon_jason["sprites"]["front_shinny"]
+# imagen = Image.open(urlopen(img))
+# plt.title(pokemon_jason["name"])
+# plt.imshow(imagen)
+imagen = json_url["sprites"]["front_default"]
+img = Image.open(urlopen(imagen))
+# plt.title(f'''Nombre: {json["name"]}''')
+var = 'Hello everyone'
+for i in range(2):
+    var += 'Hola'
+plt.xlabel(f'South park es lo mejor\también cartman\n{var}')
+plt.imshow(img)
+plt.show()
+
+# file = open('archivo_uno.json','a')
+# x = {
+#   "name": "John",
+#   "age": 30,
+#   "city": "New York"
+# }
+# file.write(json.dumps(x))
+# file.close()
+file = open('archivo_uno.json','r')
+x = json.loads(file.read())
+print(x,type(x))
+print(type(file.read()))
+# lista_archivo = json.loads(file.read())
+file.close()
+
+# Movimiento numero 124: scor
+cadena = 'Movimiento numero 124: scor'
+print(len(cadena)) # OutPut: 27
+
+# experimento nuevo: 
+def retornar():
+    return 1,2
+a,b = retornar()
+print(a,b)
+
+file = open('archivo_uno.json','w')
+lista = x
+file.write(str(lista))
+file.close()
