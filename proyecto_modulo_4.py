@@ -4,20 +4,34 @@ from PIL import Image
 from urllib.request import urlopen
 import json
 
+
 def graficar(posicion,mensaje,texto,font_size):
+    '''
+    Esta función recibe como parametro la posicion, un mensaje, el texto y el font_size para que especificamente a
+    partir de la linea de codigo de la 90 a la 94, esta sea usada para mostrar una imagen con matplotlib 
+    con todos los textos especiificados como parametros que tendràn la información correspondiente a su contexto (mensaje)
+    comentado una linea antes de ser usada esta función.
+    '''
     plt.subplot(3,3,posicion)
     plt.axis([0,20,5,0])
     plt.title(mensaje)
     plt.text(1,4, texto,fontsize=font_size)
 
 def retornar_texto(atributo,atributo_dos):
+    '''
+    Como bien lo dice su nombre, esta función retorna un texto de acuerdo a lo que hace su algoritmo, recibiendo 2 
+    parametros, el atributo que indicará cual parte del objeto json se va ha evaluar y el atributo_dos que serà 
+    una parte mas interna perteneciente a uno de los atributos dela lista atributo en el objeto json
+    '''
     cont = 0
     texto = ''
     lista_atributo = []
+    # aqui el atributo es efectivamente uno de los atributos o propiedades del objeto json solicitado por el get
     if(cont+5 > len(pokemon_jason[f"{atributo}"])):
         cont = -1
         for i in pokemon_jason[f"{atributo}"]:
             cont += 1
+            # y el atributo_dos es también uno de los atributos del subobjeto atributo
             texto += pokemon_jason[f"{atributo}"][cont][f"{atributo_dos}"]["name"]+', '
             lista_atributo.append(pokemon_jason[f"{atributo}"][cont][f"{atributo_dos}"]["name"])
     else:
@@ -36,15 +50,10 @@ def retornar_texto(atributo,atributo_dos):
             cont += 5
     return texto + 'etc.',lista_atributo
 
+# aqui lo que se pretende es abrir un archivo json para guardar toda su información en una variable 
 file = open('archivo_uno.json','r')
 lista_archivo = json.loads(file.read())
 file.close()
-
-# Cuando el usuario introduzca el nombre de un Pokémon, si no existe que le mande un mensaje de error; 
-# si existe, que muestre una imagen y las estadísticas (peso, tamaño, movimientos, habilidades y tipos). 
-
-# Posteriormente, guardarás toda la información del pokémon (junto con el link de la imagen frontal del 
-# pokémon) en un archivo .json dentro de una carpeta llamada “pokedex”.
 
 answer = 's'
 lista_diccionarios = []
@@ -58,13 +67,7 @@ while(answer == ('s' or 'S')):
         pokemon_jason = url_peticion.json()
     except:
         print('La petición no funcionó! :( ')
-    
-    # despues, en vase a nuestros requirimientos, haremos un try, yaque en la api de 
-    # "PokeAPI", al parecer no todos los pokemon cuentan con todos los atributos que otros si tienen,
-    # por ejemplo, hay algunos que efectivamente cuantan con "img" propias que los pueden representar
-    # graficamente como son o se ven en el anime, pero otros simplemente no la tienen, es por eso
-    # que si en el siguiente try, uno de esos atributos no se llegase a encontrar, solo mandará un 
-    # mensaje de advertencia, mas no fallará el programa :), y le preguntará al usuario si desea continuar.
+
     try:
         texto_habilidades = ''
         texto_habilidades,lista_habilidades = retornar_texto("abilities","ability")
@@ -81,6 +84,7 @@ while(answer == ('s' or 'S')):
         plt.subplot(3,3,1)
         plt.imshow(imagen)
         plt.title(f'''Nombre del pokemon: {pokemon_jason["name"].capitalize()}''')
+        # Usamos el xlabel especificamente para mostrar el peso y tamaño del pokemon 
         plt.xlabel(f'''Peso: {pokemon_jason["weight"]}   Tamaño: {pokemon_jason["height"]}''')
         # Para mostrar todos sus movimientos:
         graficar(3,f'''Movmientos de {pokemon_jason["name"].capitalize()}''',texto_movimientos,5)
@@ -90,6 +94,8 @@ while(answer == ('s' or 'S')):
         graficar(9,f'''Tipos de {pokemon_jason["name"].capitalize()}''',texto_tipos,9)
         
         plt.show()
+        # aqui crearemos un nuevo diccionario que llevará toda la nueva información del pokemon que halla 
+        # sido solicitado por el usuario
         diccionario = {
             "Nombre": pokemon_jason["name"].capitalize(),
             "Peso": pokemon_jason["weight"],
@@ -98,10 +104,13 @@ while(answer == ('s' or 'S')):
             "Habilidades": lista_habilidades,
             "Tipos": lista_tipos
         }
+        # y en la variable lista_diccionarios donde se guardo toda la información del objeto json, anteriormente abierto,
+        # la empezamos a actualizar con la nueva información que se valla obteniendo por cada pokemon que el usuario
+        # consulte
         lista_diccionarios.append(diccionario)
     except:
         print(f'El pokemon {nombre_pokemon} no existe!')
-            
+        
     answer = input('Desea intentar con algún otro pokemon (S/N)? ')
     while(answer != 's' and answer != 'S' and answer != 'n' and answer != 'N'):
         answer = input(f'La respuesta {answer} es ¡INVÁLIDA!, intentelo de nuevo (S/N): ')
