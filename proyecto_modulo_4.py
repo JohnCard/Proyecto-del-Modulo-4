@@ -21,7 +21,8 @@ def retornar_texto(atributo,atributo_dos):
     '''
     Como bien lo dice su nombre, esta función retorna un texto de acuerdo a lo que hace su algoritmo, recibiendo 2 
     parametros, el atributo que indicará cual parte del objeto json se va ha evaluar y el atributo_dos que serà 
-    una parte mas interna perteneciente a uno de los atributos dela lista atributo en el objeto json
+    una parte mas interna perteneciente a uno de los atributos dela lista atributo en el objeto json, asi como 
+    también retornará finalmente una lista con los valores que corresponden al contexto dela propiedad del objeto
     '''
     cont = 0
     texto = ''
@@ -62,13 +63,14 @@ while(answer == ('s' or 'S')):
     url_peticion = requests.get(f'https://pokeapi.co/api/v2/pokemon/{nombre_pokemon}')
     
     # primero intentaremos obtener el json de la petición si la petición dio un "200", como tanto 
-    # esperariamos 
+    # esperariamos, para proseguir con las demas instrucciones
     try:
+        # empezamos por crear el json del objeto requests
         pokemon_jason = url_peticion.json()
-    except:
-        print('La petición no funcionó! :( ')
 
-    try:
+        # y despues de acuerdo a todos sus datos, obtenemos lo que son el peso, el tamaño, el nombre, movimientos,
+        # habilidades y tipos del pokemon:
+        
         texto_habilidades = ''
         texto_habilidades,lista_habilidades = retornar_texto("abilities","ability")
         
@@ -109,7 +111,7 @@ while(answer == ('s' or 'S')):
         # consulte
         lista_diccionarios.append(diccionario)
     except:
-        print(f'El pokemon {nombre_pokemon} no existe!')
+        print(f'La petición no funcionó. !')
         
     answer = input('Desea intentar con algún otro pokemon (S/N)? ')
     while(answer != 's' and answer != 'S' and answer != 'n' and answer != 'N'):
