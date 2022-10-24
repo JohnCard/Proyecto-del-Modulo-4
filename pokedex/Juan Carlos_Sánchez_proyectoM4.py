@@ -38,7 +38,6 @@ def retornar_texto(atributo,atributo_dos):
     else:
         cont = 0
         texto = ''     
-        texto_dos = ''   
         while(cont < len(pokemon_jason[f"{atributo}"])):
             if(cont+5 > len(pokemon_jason[f"{atributo}"])):
                 texto_dos = ''
