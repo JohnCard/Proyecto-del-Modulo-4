@@ -1,0 +1,148 @@
+[
+ {
+  "Nombre": "Incineroar",
+  "Peso": 830,
+  "Tama\u00f1o": 18,
+  "Movimientos": [
+   "mega-punch, pay-day, fire-punch, thunder-punch, scratch, ",
+   "swords-dance, bind, double-kick, mega-kick, body-slam, ",
+   "thrash, leer, bite, growl, roar, ",
+   "ember, flamethrower, hyper-beam, low-kick, fire-spin, ",
+   "earthquake, toxic, double-team, lick, fire-blast, ",
+   "leech-life, fury-swipes, rest, substitute, snore, ",
+   "reversal, protect, scary-face, outrage, endure, ",
+   "swagger, attract, sleep-talk, return, frustration, ",
+   "hidden-power, cross-chop, sunny-day, crunch, heat-wave, ",
+   "torment, will-o-wisp, facade, focus-punch, taunt, ",
+   "superpower, revenge, brick-break, knock-off, endeavor, ",
+   "snatch, blaze-kick, blast-burn, overheat, bulk-up, ",
+   "covet, u-turn, close-combat, assurance, embargo, ",
+   "fling, flare-blitz, dark-pulse, drain-punch, focus-blast, ",
+   "giga-impact, nasty-plot, shadow-claw, fire-fang, iron-head, ",
+   "flame-charge, low-sweep, round, quash, acrobatics, ",
+   "fire-pledge, bulldoze, work-up, dual-chop, heat-crash, ",
+   "snarl, confide, darkest-lariat, throat-chop, brutal-swing, ",
+   "stomping-tantrum, burning-jealousy, lash-out, scorching-sands, "
+  ],
+  "Habilidades": [
+   "blaze",
+   "intimidate"
+  ],
+  "Tipos": [
+   "fire",
+   "dark"
+  ],
+  "Foto-Pokemon": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/727.png"
+ },
+ {
+  "Nombre": "Charizard",
+  "Peso": 905,
+  "Tama\u00f1o": 17,
+  "Movimientos": [
+   "mega-punch, fire-punch, thunder-punch, scratch, swords-dance, ",
+   "cut, wing-attack, fly, mega-kick, headbutt, ",
+   "body-slam, take-down, double-edge, leer, growl, ",
+   "roar, ember, flamethrower, hyper-beam, submission, ",
+   "counter, seismic-toss, strength, solar-beam, dragon-rage, ",
+   "fire-spin, earthquake, fissure, dig, toxic, ",
+   "rage, mimic, double-team, smokescreen, defense-curl, ",
+   "reflect, bide, fire-blast, swift, skull-bash, ",
+   "fury-swipes, rest, rock-slide, slash, substitute, ",
+   "snore, curse, protect, scary-face, mud-slap, ",
+   "outrage, sandstorm, endure, false-swipe, swagger, ",
+   "fury-cutter, steel-wing, attract, sleep-talk, return, ",
+   "frustration, dynamic-punch, dragon-breath, iron-tail, metal-claw, ",
+   "hidden-power, twister, sunny-day, crunch, rock-smash, ",
+   "beat-up, heat-wave, will-o-wisp, facade, focus-punch, ",
+   "helping-hand, brick-break, secret-power, blaze-kick, blast-burn, ",
+   "weather-ball, air-cutter, overheat, rock-tomb, aerial-ace, ",
+   "dragon-claw, dragon-dance, roost, natural-gift, tailwind, ",
+   "fling, flare-blitz, air-slash, dragon-pulse, focus-blast, ",
+   "giga-impact, shadow-claw, fire-fang, defog, captivate, ",
+   "ominous-wind, hone-claws, flame-burst, flame-charge, round, ",
+   "echoed-voice, sky-drop, incinerate, acrobatics, inferno, ",
+   "fire-pledge, bulldoze, dragon-tail, work-up, heat-crash, ",
+   "hurricane, confide, mystical-fire, power-up-punch, brutal-swing, ",
+   "breaking-swipe, scale-shot, dual-wingbeat, scorching-sands, "
+  ],
+  "Habilidades": [
+   "blaze",
+   "solar-power"
+  ],
+  "Tipos": [
+   "fire",
+   "flying"
+  ],
+  "Foto-Pokemon": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
+ },
+ {
+  "Nombre": "Pikachu",
+  "Peso": 60,
+  "Tama\u00f1o": 4,
+  "Movimientos": [
+   "mega-punch, pay-day, thunder-punch, slam, double-kick, ",
+   "mega-kick, headbutt, body-slam, take-down, double-edge, ",
+   "tail-whip, growl, surf, submission, counter, ",
+   "seismic-toss, strength, thunder-shock, thunderbolt, thunder-wave, ",
+   "thunder, dig, toxic, agility, quick-attack, ",
+   "rage, mimic, double-team, defense-curl, light-screen, ",
+   "reflect, bide, swift, skull-bash, flash, ",
+   "rest, substitute, thief, snore, curse, ",
+   "reversal, protect, sweet-kiss, mud-slap, zap-cannon, ",
+   "detect, endure, charm, rollout, swagger, ",
+   "spark, attract, sleep-talk, return, frustration, ",
+   "dynamic-punch, encore, iron-tail, hidden-power, rain-dance, ",
+   "rock-smash, uproar, facade, focus-punch, helping-hand, ",
+   "brick-break, knock-off, secret-power, signal-beam, covet, ",
+   "volt-tackle, calm-mind, shock-wave, natural-gift, feint, ",
+   "fling, magnet-rise, nasty-plot, discharge, captivate, ",
+   "grass-knot, charge-beam, electro-ball, round, echoed-voice, ",
+   "volt-switch, electroweb, wild-charge, draining-kiss, play-rough, ",
+   "play-nice, confide, electric-terrain, nuzzle, laser-focus, ",
+   "rising-voltage, "
+  ],
+  "Habilidades": [
+   "static",
+   "lightning-rod"
+  ],
+  "Tipos": [
+   "electric"
+  ],
+  "Foto-Pokemon": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+ },
+ {
+  "Nombre": "Incineroar",
+  "Peso": 830,
+  "Tama\u00f1o": 18,
+  "Movimientos": [
+   "mega-punch, pay-day, fire-punch, thunder-punch, scratch, ",
+   "swords-dance, bind, double-kick, mega-kick, body-slam, ",
+   "thrash, leer, bite, growl, roar, ",
+   "ember, flamethrower, hyper-beam, low-kick, fire-spin, ",
+   "earthquake, toxic, double-team, lick, fire-blast, ",
+   "leech-life, fury-swipes, rest, substitute, snore, ",
+   "reversal, protect, scary-face, outrage, endure, ",
+   "swagger, attract, sleep-talk, return, frustration, ",
+   "hidden-power, cross-chop, sunny-day, crunch, heat-wave, ",
+   "torment, will-o-wisp, facade, focus-punch, taunt, ",
+   "superpower, revenge, brick-break, knock-off, endeavor, ",
+   "snatch, blaze-kick, blast-burn, overheat, bulk-up, ",
+   "covet, u-turn, close-combat, assurance, embargo, ",
+   "fling, flare-blitz, dark-pulse, drain-punch, focus-blast, ",
+   "giga-impact, nasty-plot, shadow-claw, fire-fang, iron-head, ",
+   "flame-charge, low-sweep, round, quash, acrobatics, ",
+   "fire-pledge, bulldoze, work-up, dual-chop, heat-crash, ",
+   "snarl, confide, darkest-lariat, throat-chop, brutal-swing, ",
+   "stomping-tantrum, burning-jealousy, lash-out, scorching-sands, "
+  ],
+  "Habilidades": [
+   "blaze",
+   "intimidate"
+  ],
+  "Tipos": [
+   "fire",
+   "dark"
+  ],
+  "Foto-Pokemon": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/727.png"
+ }
+]
