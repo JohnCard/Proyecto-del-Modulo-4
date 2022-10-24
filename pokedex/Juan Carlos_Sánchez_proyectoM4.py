@@ -86,6 +86,12 @@ while(answer == ('s' or 'S')):
         
         # Para mostrar su imagen, peso y tamaño:
         img = pokemon_jason["sprites"]["front_default"]
+        lista_imagenes = []
+        for i in pokemon_jason["sprites"].values():
+            if(type(i) != type("")):
+                continue
+            else:
+                lista_imagenes.append(i)
         imagen = Image.open(urlopen(img))
         plt.subplot(4,4,1)
         plt.imshow(imagen)
@@ -109,7 +115,8 @@ while(answer == ('s' or 'S')):
             "Movimientos": lista_movimientos,
             "Habilidades": lista_habilidades,
             "Tipos": lista_tipos,
-            "Foto-Pokemon": pokemon_jason["sprites"]["front_default"]
+            "Foto_Pokemon": pokemon_jason["sprites"]["front_default"],
+            "Lista_Imagenes": lista_imagenes
         }
         # y en la variable lista_diccionarios donde se guardo toda la información del objeto json, anteriormente abierto,
         # la empezamos a actualizar con la nueva información que se valla obteniendo por cada pokemon que el usuario
